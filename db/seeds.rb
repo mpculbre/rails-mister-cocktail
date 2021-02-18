@@ -12,3 +12,4 @@ ingredients = JSON.parse(ingredients_serialized)
 ingredients["drinks"].each do |ingredient|
   Ingredient.create(name: ingredient["strIngredient1"])
 end
+
