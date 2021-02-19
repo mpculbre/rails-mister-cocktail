@@ -1,10 +1,10 @@
-<div class="container padded">
-  <div class="row">
+<div class="container padded text-center">
+  <div class="row justify-content-center">
     <div class="col-xs-6">
-      <div class="card-description"><h2><%= @cocktail.name %></h2>
-        <% @cocktail.doses.each do |dose| %>
-          <ul>
-            <li class="list-inline">
+      <div class="card-description mt-5"><h2><%= @cocktail.name %></h2>
+        <ul style="padding:0">
+          <% @cocktail.doses.each do |dose| %>
+            <li class="list-inline justify-content-center">
               <%= dose.ingredient.name %> | <%= dose.description %>
               <%= link_to cocktail_path(@cocktail),
                     method: :delete,
@@ -12,8 +12,8 @@
                 <i class="fa fa-trash-o pull-right"></i>
               <% end %>
             </li>
-          </ul>
-        <% end %>
+          <% end %>
+        </ul>
         </div>
 
         <br><br>
@@ -21,12 +21,14 @@
           <%= simple_form_for([ @cocktail, @dose ]) do |form| %>
             <%= form.association :ingredient %>
             <%= form.input :description %>
-            <%= form.button :submit, class: "btn btn-success" %>
+            <%= form.button :submit, class: "btn btn-primary" %>
           <% end %>
           <%= link_to "Delete Cocktail", cocktail_path(@cocktail),
             method: :delete,
             data: { confirm: "Are you sure?" },
-            class: "btn btn-danger rounded mt-3" %>
+            class: "btn btn-danger rounded mt-3 mb-3" %>
+          <br>
+          <%= link_to "See all cocktails", cocktails_path %>
         </div>
       </div>
     </div>
